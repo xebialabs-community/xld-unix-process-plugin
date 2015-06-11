@@ -17,7 +17,8 @@ Place the plugin JAR file into your `SERVER_HOME/plugins` directory.
 
 + unix.ProcessContainer
   * `home` (Home directory of the process)
-  * `startCommand` (Start command relative to the home directory)
-  * `stopCommand` (Stop command relative to the home directory)
+  * `startCommand` (Start command)
+  * `stopCommand` (Stop command)
 
 + unix.ProcessSpec (Folder artifact with process binaries and other files)
+  * `configScript` (Script which gets run on deployment per deployed)
