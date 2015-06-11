@@ -11,6 +11,7 @@
     <!-- For deploying/undeploying the files, and executing script with all of commands  -->
     <type type="unix.Process" deployable-type="unix.ProcessSpec" extends="udm.BaseDeployedArtifact" container-type="unix.ProcessContainer">
         <generate-deployable type="unix.ProcessSpec" extends="udm.BaseDeployableFolderArtifact" />
+        <property name="configScript" />
     </type>
 
     <type type="unix.ProcessContainer" extends="udm.BaseContainer">

@@ -6,4 +6,6 @@
 
 -->
 
-${previousDeployed.container.home}/${previousDeployed.container.stopCommand}
+cd ${previousDeployed.container.home}
+export PATH=${previousDeployed.container.home}:$PATH
+${previousDeployed.container.stopCommand}

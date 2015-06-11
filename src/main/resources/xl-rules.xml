@@ -15,11 +15,11 @@
             <operation>DESTROY</operation>
         </conditions>
         <steps>
-           <os-script>
-             <description expression="true">'Stop ' + previousDeployed.name + ' on ' + previousDeployed.container.host.name</description>
-             <script>unix/stopProcess</script>
-             <order>20</order>
-           </os-script>
+            <os-script>
+                <description expression="true">'Stop ' + previousDeployed.name + ' on ' + previousDeployed.container.host.name</description>
+                <script>unix/stopProcess</script>
+                <order>20</order>
+            </os-script>
         </steps>
     </rule>
 
@@ -31,9 +31,9 @@
         </conditions>
         <steps>
            <os-script>
-             <description expression="true">'Deploy ' + deployed.name + ' on ' + deployed.container.host.name</description>
-             <script>unix/copyProcess</script>
-             <order>50</order>
+                <description expression="true">'Deploy ' + deployed.name + ' on ' + deployed.container.host.name</description>
+                <script>unix/copyProcess</script>
+                <order>50</order>
            </os-script>
         </steps>
     </rule>
@@ -46,9 +46,9 @@
         </conditions>
         <steps>
            <os-script>
-             <description expression="true">'Start ' + deployed.name + ' on ' + deployed.container.host.name</description>
-             <script>unix/startProcess</script>
-             <order>90</order>
+                <description expression="true">'Start ' + deployed.name + ' on ' + deployed.container.host.name</description>
+                <script>unix/startProcess</script>
+                <order>90</order>
            </os-script>
         </steps>
     </rule>
@@ -60,10 +60,26 @@
         </conditions>
         <steps>
            <os-script>
-             <description expression="true">'Remove ' + previousDeployed.name + ' on ' + previousDeployed.container.host.name</description>
-             <script>unix/removeProcess</script>
-             <order>50</order>
+                <description expression="true">'Remove ' + previousDeployed.name + ' on ' + previousDeployed.container.host.name</description>
+                <script>unix/removeProcess</script>
+                <order>50</order>
            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="unix.Process.RUN_CONFIG" scope="deployed">
+        <conditions>
+            <type>unix.Process</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+            <expression>deployed.configScript is not None and deployed.configScript != ''</expression>
+        </conditions>
+        <steps>
+            <os-script>
+                <description expression="true">'Run ' + deployed.configScript + ' for ' + deployed.name + ' on ' + deployed.container.host.name</description>
+                <script>unix/runConfigScript</script>
+                <order>80</order>
+            </os-script>
         </steps>
     </rule>
 

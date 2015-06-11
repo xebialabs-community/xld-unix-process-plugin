@@ -8,4 +8,4 @@
 
 cd ${deployed.container.home}
 export PATH=${deployed.container.home}:$PATH
-${deployed.container.startCommand}
+${deployed.configScript}
