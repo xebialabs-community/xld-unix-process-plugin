@@ -1,0 +1,70 @@
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.xebialabs.com/xl-deploy/xl-rules" >
+
+    <rule name="unix.Process.STOP" scope="deployed">
+        <conditions>
+            <type>unix.Process</type>
+            <operation>MODIFY</operation>
+            <operation>DESTROY</operation>
+        </conditions>
+        <steps>
+           <os-script>
+             <description expression="true">'Stop ' + previousDeployed.name + ' on ' + previousDeployed.container.host.name</description>
+             <script>unix/stopProcess</script>
+             <order>20</order>
+           </os-script>
+        </steps>
+    </rule>
+
+    <rule name="unix.Process.COPY" scope="deployed">
+        <conditions>
+            <type>unix.Process</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+           <os-script>
+             <description expression="true">'Deploy ' + deployed.name + ' on ' + deployed.container.host.name</description>
+             <script>unix/copyProcess</script>
+             <order>50</order>
+           </os-script>
+        </steps>
+    </rule>
+ 
+    <rule name="unix.Process.START" scope="deployed">
+        <conditions>
+            <type>unix.Process</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+           <os-script>
+             <description expression="true">'Start ' + deployed.name + ' on ' + deployed.container.host.name</description>
+             <script>unix/startProcess</script>
+             <order>90</order>
+           </os-script>
+        </steps>
+    </rule>
+
+    <rule name="unix.Process.REMOVE" scope="deployed">
+        <conditions>
+            <type>unix.Process</type>
+            <operation>DESTROY</operation>
+        </conditions>
+        <steps>
+           <os-script>
+             <description expression="true">'Remove ' + previousDeployed.name + ' on ' + previousDeployed.container.host.name</description>
+             <script>unix/removeProcess</script>
+             <order>50</order>
+           </os-script>
+        </steps>
+    </rule>
+
+</rules>
