@@ -8,4 +8,5 @@
 
 cd ${deployed.container.home}
 export PATH=${deployed.container.home}:$PATH
+chmod +x ${deployed.configScript}
 ${deployed.configScript}

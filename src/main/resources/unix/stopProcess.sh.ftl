@@ -8,4 +8,5 @@
 
 cd ${previousDeployed.container.home}
 export PATH=${previousDeployed.container.home}:$PATH
+chmod +x ${previousDeployed.container.stopCommand}
 ${previousDeployed.container.stopCommand}
