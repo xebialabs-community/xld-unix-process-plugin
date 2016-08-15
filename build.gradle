@@ -1,16 +1,25 @@
-buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath "nl.javadude.gradle.plugins:license-gradle-plugin:0.11.0"
-  }
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id "com.github.hierynomus.license" version "0.13.0"
+    id "com.xebialabs.xldp" version "1.0.5"
 }
 
+group = 'com.xebialabs.deployit.community'
 version="1.0.2"
 
 apply plugin: "com.github.hierynomus.license"
 apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+processResources.configure {
+    filter ReplaceTokens, tokens: [
+            'project.version': version.toString(),
+            'project.name': rootProject.name
+    ]
+}
 
 license {
     header rootProject.file('src/main/license/xebialabs_community.license')
