@@ -8,10 +8,10 @@ plugins {
 }
 
 xlDocker {
-  compileImage = 'xebialabs/xld_dev_compile'
-  compileVersion = 'v8.5.0.1'
-  runImage = 'xebialabs/xld_dev_run'
-  runVersion = 'v8.5.0.1'
+  compileImage = 'xebialabsunsupported/xld_dev_compile'
+  compileVersion = '8.6.1'
+  runImage = 'xebialabsunsupported/xld_dev_run'
+  runVersion = '8.6.1'
   runPortMapping = '24516:4516'
 }
 
