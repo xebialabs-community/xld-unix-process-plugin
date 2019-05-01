@@ -9,7 +9,7 @@
 [xld-unix-process-plugin-travis-image]: https://travis-ci.org/xebialabs-community/xld-unix-process-plugin.svg?branch=master
 [xld-unix-process-plugin-travis-url]: https://travis-ci.org/xebialabs-community/xld-unix-process-plugin
 [xld-unix-process-plugin-codacy-image]: https://api.codacy.com/project/badge/Grade/21ad78cccf7b47839547a1fcd9e342aa
-[xld-unix-process-plugin-codacy-url]: https://www.codacy.com/app/xebialabs-community/xld-unix-process-plugin_2
+[xld-unix-process-plugin-codacy-url]: https://www.codacy.com/app/xebialabs-community/xld-unix-process-plugin
 [xld-unix-process-plugin-code-climate-image]: https://codeclimate.com/github/xebialabs-community/xld-unix-process-plugin/badges/gpa.svg
 [xld-unix-process-plugin-code-climate-url]: https://codeclimate.com/github/xebialabs-community/xld-unix-process-plugin
 [xld-unix-process-plugin-license-image]: https://img.shields.io/badge/License-MIT-yellow.svg
